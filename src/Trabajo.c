@@ -286,7 +286,7 @@ int selectMarcaOrder(ETrabajo trabajo[], int len)
 	int order;
 	int selected = 0;
 
-	    printf("Por favor seleccione el orden del listado\n."
+	    printf("Por favor seleccione el orden del listado.\n"
 	           "1) Ascendiente.\n"
 	           "2) Descendiente.\n");
 	    fflush(stdout);

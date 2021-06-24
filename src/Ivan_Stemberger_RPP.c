@@ -27,7 +27,7 @@ int main()
                "5) Listar Servicios\n"
                "6) Total en pesos por los servicios prestados\n"
                "7) Listado de trabajos ordenados por marca de bicicleta.\n"
-    		   "8) Listar servicio con más trabajos realizados\n."
+    		   "8) Listar servicio con más trabajos realizados.\n"
     		   "9)Salir.\n");
     	fflush(stdout);
         scanf("%d",&opcion);
