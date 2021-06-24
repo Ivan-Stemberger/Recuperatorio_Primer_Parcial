@@ -38,3 +38,22 @@ void listar_Servicios(EServicio* servicio, int len)
         servicio++;
     }
 }
+
+void listar_ServiciosById(EServicio* servicio, int len, int id)
+{
+	int i;
+
+	    printf("ID || Descripcion || Precio\n");
+	    fflush(stdout);
+
+	    for(i=0;i<len;i++)
+	    {
+			if(id == (*servicio).id)
+			{
+				printf("%d,%s,%d\n",(*servicio).id,(*servicio).descripcion,(*servicio).precio);
+				fflush(stdout);
+
+			}
+			servicio++;
+	    }
+}

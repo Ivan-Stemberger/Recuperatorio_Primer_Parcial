@@ -26,7 +26,9 @@ int main()
                "4) Listar trabajos por anio y marca.\n"
                "5) Listar Servicios\n"
                "6) Total en pesos por los servicios prestados\n"
-               "7) Salir.\n");
+               "7) Listado de trabajos ordenados por marca de bicicleta.\n"
+    		   "8) Listar servicio con más trabajos realizados\n."
+    		   "9)Salir.\n");
     	fflush(stdout);
         scanf("%d",&opcion);
 
@@ -122,9 +124,48 @@ int main()
                 }
                 break;
             }
+            case 7:
+            {
+            	if(alta)
+            	{
+            		selectMarcaOrder(trabajo,len);
+            	}
+                else
+                {
+                    printf("Primero debe cargar al menos un trabajo\n.");
+                    fflush(stdout);
+                }
+                break;
+            }
+            case 8:
+            {
+            	if(alta)
+            	{
+            		selectMarcaOrder(trabajo,len);
+            	}
+                else
+                {
+                    printf("Primero debe cargar al menos un trabajo\n.");
+                    fflush(stdout);
+                }
+            	break;
+            }
+            case 9:
+            {
+            	if(alta)
+            	{
+            		moreServicesDone(trabajo,len,servicio,4);
+            	}
+                else
+                {
+                    printf("Primero debe cargar al menos un trabajo\n.");
+                    fflush(stdout);
+                }
+            	break;
+            }
         }
 
-    }while(opcion!=7);
+    }while(opcion!=9);
 
     return 0;
 }

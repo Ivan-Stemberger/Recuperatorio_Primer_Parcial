@@ -97,6 +97,8 @@ int remove_trabajo(ETrabajo* trabajo, int len);
  */
 int selectOrder(ETrabajo* trabajo, int len);
 
+int selectMarcaOrder(ETrabajo trabajo[], int len);
+
 /** \brief Ordena el array en función del orden solicitado.
  *
  * \param trabajo ETrabajo* El puntero al primer elemento del array
@@ -107,6 +109,8 @@ int selectOrder(ETrabajo* trabajo, int len);
  */
 int sort_trabajos(ETrabajo* trabajo, int len, int order);
 
+int sort_byMarca(ETrabajo trabajo[], int len, int order);
+
 /** \brief Ordena el array por año de manera ascendente.
  *
  * \param trabajo ETrabajo* El puntero al primer elemento del array
@@ -116,6 +120,14 @@ int sort_trabajos(ETrabajo* trabajo, int len, int order);
 void sort_byAnioAscend(ETrabajo* trabajo, int len);
 
 /** \brief Ordena el array por marca de manera ascendente cuando el año es igual entre dos elementos.
+ *
+ * \param trabajo ETrabajo* El puntero al primer elemento del array
+ * \param len int tamaño del array.
+ *
+ */
+void sort_byAnioYMarcaAscend(ETrabajo* trabajo, int len);
+
+/** \brief Ordena el array por marca de manera ascendente.
  *
  * \param trabajo ETrabajo* El puntero al primer elemento del array
  * \param len int tamaño del array.
@@ -137,7 +149,17 @@ void sort_byAnioDescend(ETrabajo* trabajo, int len);
  * \param len int tamaño del array.
  *
  */
+void sort_byAnioYMarcaAscend(ETrabajo* trabajo, int len);
+
+/** \brief Ordena el array por marca de manera descendente.
+ *
+ * \param trabajo ETrabajo* El puntero al primer elemento del array
+ * \param len int tamaño del array.
+ *
+ */
 void sort_byMarcaDescend(ETrabajo* trabajo, int len);
+
+int moreServicesDone(ETrabajo* trabajo, int len, EServicio* servicio, int lenServicio);
 
 /** \brief Muestra por pantalla el array de Trabajo.
  *

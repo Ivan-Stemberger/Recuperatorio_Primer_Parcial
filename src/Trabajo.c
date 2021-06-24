@@ -281,6 +281,23 @@ int selectOrder(ETrabajo trabajo[], int len)
     return selected;
 }
 
+int selectMarcaOrder(ETrabajo trabajo[], int len)
+{
+	int order;
+	int selected = 0;
+
+	    printf("Por favor seleccione el orden del listado\n."
+	           "1) Ascendiente.\n"
+	           "2) Descendiente.\n");
+	    fflush(stdout);
+	    scanf("%d",&order);
+
+	    if(sort_byMarca(trabajo,len,order))
+	    {
+	        selected = 1;
+	    }
+	    return selected;
+}
 
 int sort_trabajos(ETrabajo trabajo[], int len, int order)
 {
@@ -311,6 +328,32 @@ int sort_trabajos(ETrabajo trabajo[], int len, int order)
 
 }
 
+int sort_byMarca(ETrabajo trabajo[], int len, int order)
+{
+	int sorted = 0;
+
+	    if(trabajo !=NULL)
+	    {
+	        switch(order)
+	        {
+	            case 1:
+	            {
+	                sort_byMarcaAscend(trabajo,len);
+	                sorted = 1;
+	                break;
+	            }
+	            case 2:
+	            {
+	                sort_byMarcaDescend(trabajo,len);
+	                sorted = 1;
+	                break;
+	            }
+	        }
+	    }
+
+	    return sorted;
+}
+
 void sort_byAnioAscend(ETrabajo trabajo[], int len)
 {
 
@@ -338,7 +381,7 @@ void sort_byAnioAscend(ETrabajo trabajo[], int len)
 
 }
 
-void sort_byMarcaAscend(ETrabajo* trabajo, int len)
+void sort_byAnioYMarcaAscend(ETrabajo* trabajo, int len)
 {
 
 	int i;
@@ -362,6 +405,32 @@ void sort_byMarcaAscend(ETrabajo* trabajo, int len)
     }
 
 }
+
+void sort_byMarcaAscend(ETrabajo* trabajo, int len)
+{
+
+	int i;
+	int j;
+	ETrabajo aux;
+
+	for(i=1;i<len;i++)
+	{
+
+		aux = trabajo[i];
+
+	    j= i - 1;
+
+        while(j>=0 && strcmp(aux.marcaBicicleta,trabajo[j].marcaBicicleta)<0)
+        {
+            trabajo[j+1] = trabajo[j];
+            j--;
+        }
+
+        trabajo[j+1] = aux;
+    }
+
+}
+
 
 void sort_byAnioDescend(ETrabajo* trabajo, int len)
 {
@@ -388,7 +457,7 @@ void sort_byAnioDescend(ETrabajo* trabajo, int len)
 
 }
 
-void sort_byMarcaDescend(ETrabajo* trabajo, int len)
+void sort_byMarcaYAnioDescend(ETrabajo* trabajo, int len)
 {
 
 	int i;
@@ -412,6 +481,93 @@ void sort_byMarcaDescend(ETrabajo* trabajo, int len)
 	}
 
 }
+
+void sort_byMarcaDescend(ETrabajo* trabajo, int len)
+{
+
+	int i;
+	int j;
+	ETrabajo aux;
+
+	for(i=1;i<len;i++)
+	{
+
+		aux = trabajo[i];
+
+		j= i - 1;
+
+	    while(j>=0 && strcmp(aux.marcaBicicleta,trabajo[j].marcaBicicleta)>0)
+	    {
+			trabajo[j+1] = trabajo[j];
+			j--;
+	    }
+
+	    trabajo[j+1] = aux;
+	}
+
+}
+
+int moreServicesDone(ETrabajo* trabajo, int len, EServicio* servicio, int lenServicio)
+{
+	int i;
+	int j;
+	int id;
+	int id2 = 0;
+	int id3 = 0;
+	int id4 = 0;
+	int cantidad = 0;
+	int mayor = 0;
+	int listed = 0;
+	for(i=0;i<lenServicio;i++)
+	{
+		for(j=0;j<len;j++)
+		{
+			if((*servicio).id == (*trabajo).idServicio.id)
+			{
+				cantidad++;
+				trabajo++;
+				listed = 1;
+			}
+
+			if(cantidad>mayor)
+			{
+				mayor = cantidad;
+				id = i+1;
+			}
+			if(cantidad == mayor)
+			{
+				id2 = i+1;
+			}
+			if(cantidad == mayor && id2 != i+1)
+			{
+				id3 = i+1;
+			}
+			if(cantidad == mayor && id3 != i+1)
+			{
+				id4 = i+1;
+			}
+		}
+	}
+
+	listar_ServiciosById(servicio,lenServicio,id);
+	if(id2 != 0)
+	{
+		listar_ServiciosById(servicio,lenServicio,id2);
+	}
+	if(id3 != 0)
+	{
+		listar_ServiciosById(servicio,lenServicio,id3);
+	}
+	if(id4 != 0)
+	{
+		listar_ServiciosById(servicio,lenServicio,id4);
+	}
+
+	return listed;
+
+
+}
+
 
 void listar_trabajos(ETrabajo* trabajo, int len)
 {

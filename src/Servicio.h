@@ -28,4 +28,6 @@ void listar_Servicios(EServicio* servicio, int len);
  */
 int findPrecio_byId(EServicio* servicio, int len, int id);
 
+void listar_ServiciosById(EServicio* servicio, int len, int id);
+
 #endif // servicio_H_INCLUDED
