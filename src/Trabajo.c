@@ -493,7 +493,7 @@ ETrabajo* getTrabajo_byID(ETrabajo* trabajo, int len, int id)
 
     for(i=0;i<len;i++)
     {
-        if((*trabajo).id == id)
+        if((*trabajo).id == id && (*trabajo).isEmpty == 0)
         {
             trabajoAux = trabajo;
         }
